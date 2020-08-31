@@ -1,0 +1,49 @@
+﻿@model List<ThingsToDo>
+
+@{int index = 1; }
+
+@foreach (ThingsToDo thing in Model)
+{
+
+    <h1>Task: @index</h1>
+    <table class="table table-bordered shadow table-hover table-info text-center">
+        <tr>
+            <td class="text-center">Task Description:</td>
+            <td>@thing.ThingDescription</td>
+        </tr>
+        <tr>
+            <td>Due Date:</td>
+            <td>@thing.DueDate</td>
+        </tr>
+        <tr>
+            <td>Completion Status:</td>
+            @if (thing.Completion == true)
+            {
+                <td>
+                    Completed
+                    <form action="../Home/ChangeCompletion?idIndex=@thing.Id" method="post">
+                        
+                        <input type="submit" value="Mark task as incomplete" class="btn-dark" />
+
+                    </form>
+                </td>
+            }
+            else
+            {
+                <td>
+                    Incomplete
+                    <form action="../Home/ChangeCompletion?idIndex=@thing.Id" method="post">
+                       
+                        <input type="submit" value="Mark task as complete" class=" btn-dark" />
+
+                    </form>
+                </td>
+            }
+        </tr>
+        <tr>
+            <th colspan="2" class="text-center"><a href="../Home/DeleteThingToDo?id=@thing.Id">Remove Task</a></th>
+
+        </tr>
+    </table>
+    index++;
+}

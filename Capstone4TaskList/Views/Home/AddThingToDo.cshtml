@@ -1,0 +1,13 @@
+﻿@model List<ThingsToDo>
+
+    <form action="../Home/AddThingToDo" method="post">
+        <label>Task Description</label>
+        <input type="text" name="ThingDescription" placeholder="Description" class="form-control mb-4" />
+        <label>Due Date </label>
+        <input type="date" name="DueDate" placeholder="yyyy/mm/dd" class="form-control mb-4" />
+        Check this box if the task has been completed
+        <input type="checkbox" name="Completion" value="True" />
+        <input type="checkbox" name="Completion" value="false" hidden />
+        <input type="submit" value="Add Task" class="form-control mb-4" />
+
+    </form>
